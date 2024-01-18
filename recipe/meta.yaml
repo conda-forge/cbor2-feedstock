@@ -1,5 +1,5 @@
 {% set name = "cbor2" %}
-{% set version = "5.5.1" %}
+{% set version = "5.6.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/cbor2-{{ version }}.tar.gz
-  sha256: f9e192f461a9f8f6082df28c035b006d153904213dc8640bed8a72d72bbc9475
+  sha256: 9d94e2226f8f5792fdba5ab20e07b9bfe02e76c10c3ca126418cd4310439d002
 
 build:
   skip: true  # [py<37]
