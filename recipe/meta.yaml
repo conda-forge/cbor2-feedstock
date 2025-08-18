@@ -1,18 +1,19 @@
 {% set name = "cbor2" %}
-{% set version = "5.6.5" %}
+{% set version = "5.7.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/cbor2-{{ version }}.tar.gz
-  sha256: b682820677ee1dbba45f7da11898d2720f92e06be36acec290867d5ebf3d7e09
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/cbor2-{{ version }}.tar.gz
+  sha256: 3f6d843f4db4d0ec501c46453c22a4fbebb1abfb5b740e1bcab34c615cd7406b
 
 build:
-  skip: true  # [py<37]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
+  entry_points:
+    - cbor2=cbor2.tool:main
 
 requirements:
   build:
@@ -22,8 +23,9 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
     - python
-    - setuptools >=61
+    - setuptools >=77
     - setuptools-scm >=6.4
+    - tomli
     - pip
   run:
     - python
@@ -33,6 +35,7 @@ test:
     - cbor2
   commands:
     - pip check
+    - cbor2 --help
   requires:
     - pip
 
