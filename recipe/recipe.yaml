@@ -14,7 +14,9 @@ source:
 
 build:
   number: 0
-  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  script:
+    - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   python:
     entry_points:
       - cbor2=cbor2.tool:main
@@ -23,6 +25,8 @@ requirements:
   build:
     - ${{ compiler('c') }}
     - ${{ stdlib('c') }}
+    - ${{ compiler('rust') }}
+    - cargo-bundle-licenses
     - if: build_platform != target_platform
       then:
         - python
@@ -31,6 +35,7 @@ requirements:
     - python
     - setuptools >=77
     - setuptools-scm >=6.4
+    - setuptools-rust
     - tomli
     - pip
   run:
@@ -47,7 +52,9 @@ tests:
 about:
   summary: CBOR (de)serializer with extensive tag support
   license: MIT
-  license_file: LICENSE.txt
+  license_file:
+    - LICENSE.txt
+    - THIRDPARTY.yml
   homepage: https://github.com/agronholm/cbor2
   documentation: https://cbor2.readthedocs.io/
 
