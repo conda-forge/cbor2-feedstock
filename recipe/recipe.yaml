@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: cbor2
-  version: "5.9.0"
+  version: "6.1.1"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/cbor2-${{ version }}.tar.gz
-  sha256: 85c7a46279ac8f226e1059275221e6b3d0e370d2bb6bd0500f9780781615bcea
+  sha256: 6f0644869e0fdcd6f3874330b8f1cebd009f33191de43acf609dc2409cd362c4
 
 build:
   number: 0
