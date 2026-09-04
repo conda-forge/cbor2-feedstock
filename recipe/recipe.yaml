@@ -13,7 +13,7 @@ source:
   sha256: 01ecc79a28f33d17331943ce508fc1e21f4b06553c73f874f4c77120d72b2ef9
 
 build:
-  number: 0
+  number: 1
   script:
     - cd rust && cargo-bundle-licenses --format yaml --output ../THIRDPARTY.yml && cd ..
     - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
