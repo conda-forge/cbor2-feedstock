@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: cbor2
-  version: "6.1.4"
+  version: "6.1.5"
 
 package:
   name: ${{ name|lower }}
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/cbor2-${{ version }}.tar.gz
-  sha256: 01ecc79a28f33d17331943ce508fc1e21f4b06553c73f874f4c77120d72b2ef9
+  sha256: 6eb06160c42315ac0c4ded461c7d84d92fa18c69d13d17fc1dfc1fae96580c95
 
 build:
-  number: 1
+  number: 0
   script:
     - cd rust && cargo-bundle-licenses --format yaml --output ../THIRDPARTY.yml && cd ..
     - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
